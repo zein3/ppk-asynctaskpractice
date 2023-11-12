@@ -1,5 +1,6 @@
 package com.polstat.asynctaskpractice
 
+import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -35,7 +36,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("StaticFieldLeak")
     inner class AsyncTaskExample() : AsyncTask<String, String, Bitmap>() {
+        @Deprecated("Deprecated in Java")
         override fun onPreExecute() {
             super.onPreExecute()
             p = ProgressDialog(imageView.context)
@@ -44,6 +47,7 @@ class MainActivity : AppCompatActivity() {
             p.setCancelable(false)
             p.show()
         }
+        @Deprecated("Deprecated in Java")
         override fun doInBackground(vararg strings: String?): Bitmap? {
             try {
                 imageUrl = URL(strings[0])
@@ -62,6 +66,7 @@ class MainActivity : AppCompatActivity() {
             return bmImg
         }
 
+        @Deprecated("Deprecated in Java")
         override fun onPostExecute(result: Bitmap?) {
             super.onPostExecute(result)
             if (imageView != null) {
